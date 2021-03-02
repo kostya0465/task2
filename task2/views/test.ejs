@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%=title %></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+<h1><%=title %></h1>
+<p> Name:
+    <input type="text" name="input" id="name">
+</p>
+<p> Date:
+    <input type="text" name="input1" id="date">
+</p>
+<button onclick="myFunction()">click</button><br>
+<script>
+    function myFunction() {
+        fetch('/name_date', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: document.getElementById("name")["value"],
+                date: document.getElementById("date")["value"]
+            })
+        })
+    }
+</script>
+<% for(var i=0; i<str.length;i++) {%>
+    <p><%=str[i] %></p>
+<%} %>
+</body>
+<html>
